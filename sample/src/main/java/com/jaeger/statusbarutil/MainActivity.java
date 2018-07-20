@@ -17,7 +17,7 @@ import com.jaeger.statusbardemo.R;
 /**
  * Created by Jaeger on 16/2/14.
  *
- * Email: chjie.jaeger@gamil.com
+ * Email: chjie.jaeger@gmail.com
  * GitHub: https://github.com/laobie
  */
 public class MainActivity extends BaseActivity {
@@ -29,6 +29,9 @@ public class MainActivity extends BaseActivity {
     private Button mBtnSetTranslucent;
     private Button mBtnSetForImageView;
     private Button mBtnUseInFragment;
+    private Button mBtnSetColorForSwipeBack;
+    private Button mBtnSwitchMode;
+
     private ViewGroup contentLayout;
     private SeekBar mSbChangeAlpha;
     private TextView mTvStatusAlpha;
@@ -41,17 +44,19 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        contentLayout = (ViewGroup) findViewById(R.id.main);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mChbTranslucent = (CheckBox) findViewById(R.id.chb_translucent);
-        mBtnSetColor = (Button) findViewById(R.id.btn_set_color);
-        mBtnSetTransparent = (Button) findViewById(R.id.btn_set_transparent);
-        mBtnSetTranslucent = (Button) findViewById(R.id.btn_set_translucent);
-        mBtnSetForImageView = (Button) findViewById(R.id.btn_set_for_image_view);
-        mBtnUseInFragment = (Button) findViewById(R.id.btn_use_in_fragment);
-        mSbChangeAlpha = (SeekBar) findViewById(R.id.sb_change_alpha);
-        mTvStatusAlpha = (TextView) findViewById(R.id.tv_status_alpha);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        contentLayout = findViewById(R.id.main);
+        mToolbar = findViewById(R.id.toolbar);
+        mChbTranslucent = findViewById(R.id.chb_translucent);
+        mBtnSetColor = findViewById(R.id.btn_set_color);
+        mBtnSetTransparent = findViewById(R.id.btn_set_transparent);
+        mBtnSetTranslucent = findViewById(R.id.btn_set_translucent);
+        mBtnSetForImageView = findViewById(R.id.btn_set_for_image_view);
+        mBtnUseInFragment = findViewById(R.id.btn_use_in_fragment);
+        mBtnSetColorForSwipeBack = findViewById(R.id.btn_set_color_for_swipe_back);
+        mBtnSwitchMode = findViewById(R.id.btn_switch_mode);
+        mSbChangeAlpha = findViewById(R.id.sb_change_alpha);
+        mTvStatusAlpha = findViewById(R.id.tv_status_alpha);
         setSupportActionBar(mToolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open,
@@ -97,6 +102,22 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UseInFragmentActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtnSetColorForSwipeBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SwipeBackActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtnSwitchMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SwitchModeActivity.class);
                 startActivity(intent);
             }
         });
